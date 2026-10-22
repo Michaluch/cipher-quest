@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Шифрувальний квест</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <div><h1>Шифрувальний <span>квест</span></h1><div class="sub">Інформатика · розв’яжіть завдання, щоб відкрити наступне</div></div>
+    <div class="progress" id="progress" aria-label="Прогрес"></div>
+  </header>
+
+  <section class="card" id="start">
+    <h2>Як це працює</h2>
+    <p>Квест має 30 завдань: двійкова система числення, об’єм зображень і шифри. Правильна відповідь відкриває наступне завдання. Регістр і пробіли у відповіді не важливі.</p>
+    <p class="small">Знадобиться довідник унизу сторінки, калькулятор, олівець і папір.</p>
+    <form id="startForm">
+      <input type="text" id="name" class="name" placeholder="Прізвище та ім’я" autocomplete="off" maxlength="80" required>
+      <button class="primary" type="submit">Почати</button>
+    </form>
+    <div id="startMsg" role="status"></div>
+  </section>
+
+  <section class="card" id="task" hidden>
+    <div class="meta"><span class="chip" id="section"></span><span class="chip alt" id="cipherName" hidden></span><span id="step"></span></div>
+    <h2 id="title"></h2>
+    <p id="ask"></p>
+    <div class="display" id="display" aria-live="polite"></div>
+    <form id="answerForm" autocomplete="off">
+      <div class="answer-wrap"><input type="text" id="answer" placeholder="Ваша відповідь" aria-label="Відповідь" spellcheck="false"><span class="unit" id="unit"></span></div>
+      <button class="primary" type="submit" id="checkBtn">Перевірити</button>
+    </form>
+    <div id="msg" role="status"></div>
+    <div class="row">
+      <button class="ghost" type="button" id="hintBtn">Підказка</button>
+      <button class="primary" type="button" id="nextBtn" hidden>Наступне завдання →</button>
+    </div>
+    <div class="hint" id="hint" hidden></div>
+  </section>
+
+  <section class="card" id="finish" hidden>
+    <h2>Квест пройдено!</h2>
+    <p id="finName"></p>
+    <div class="stats">
+      <div class="stat"><b id="sTime">—</b><span>час</span></div>
+      <div class="stat"><b id="sErr">0</b><span>помилкових спроб</span></div>
+      <div class="stat"><b id="sHint">0</b><span>підказок</span></div>
+    </div>
+    <p class="small">Результат збережено для вчителя. Покажіть цей екран, якщо вчитель попросить.</p>
+    <div class="row"><button class="ghost" type="button" id="restart">Почати спочатку</button></div>
+  </section>
+
+  <details id="refBox">
+    <summary>Довідник</summary>
+    <div class="ref">
+      <h3>Двійкова система</h3>
+      <div class="tbl"><table class="pow"><tr><th>розряд</th><td>7</td><td>6</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>0</td></tr><tr><th>вага</th><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr></table></div>
+      <h3>Об’єм зображення</h3>
+      <p class="small">V = ширина × висота × i (біт) · ÷ 8 → байти · ÷ 1024 → Кбайт · кольорів N = 2ⁱ</p>
+      <h3>Абетка (А = 0 … Я = 32)</h3>
+      <div class="tbl"><table class="abc" id="abc"></table></div>
+      <h3>Квадрат Полібія</h3>
+      <div class="tbl"><table class="poly" id="poly"></table></div>
+      <p class="small">Цезар: шифр = (номер + k) mod 33 · Атбаш: номер → 32 − номер · Віженер: зсув = номер літери ключа. Пробіли не шифруються.</p>
+    </div>
+  </details>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

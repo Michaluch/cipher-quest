@@ -1,0 +1,15 @@
+{
+  "name": "cipher-quest",
+  "version": "1.0.0",
+  "description": "Шифрувальний квест: 30 завдань з інформатики (двійкова система, об'єм зображень, шифри) з перевіркою відповідей на сервері",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "engines": { "node": ">=18" },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
