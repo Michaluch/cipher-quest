@@ -3,7 +3,7 @@ const $ = (id) => document.getElementById(id);
 const KEY = "cipher-quest-token";
 const store = { get: () => { try { return localStorage.getItem(KEY); } catch { return null; } },
   set: (v) => { try { v ? localStorage.setItem(KEY, v) : localStorage.removeItem(KEY); } catch {} } };
-let token = null, current = null, pending = null, total = 30, solvedCount = 0;
+let token = null, current = null, pending = null, total = 21, solvedCount = 0;
 
 async function api(path, body) {
   const r = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body || {}) });
@@ -86,6 +86,7 @@ $("restart").addEventListener("click", () => { setToken(null); $("name").value =
 async function boot() {
   try {
     const ref = await fetch("/api/reference").then((r) => r.json());
+    if (ref.total) { total = ref.total; $("totalCount").textContent = ref.total; }
     let rows = "";
     for (let r = 0; r < 3; r++) {
       const seg = [...ref.abc].slice(r * 11, r * 11 + 11);
