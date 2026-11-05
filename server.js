@@ -68,7 +68,7 @@ const stateOf = (a) => ({ token: makeToken(a.id), errors: a.errors, hints: a.hin
 const finishedView = (a) => ({ finished: true, name: a.name, total: TOTAL, timeMs: a.finishedAt - a.startedAt, errors: a.errors, hints: a.hints });
 async function attemptFrom(req) { const id = tokenId(req.body?.token); return id ? store.get(id) : null; }
 
-app.get("/api/reference", (_req, res) => res.json({ abc: ABC, poly: POLY }));
+app.get("/api/reference", (_req, res) => res.json({ abc: ABC, poly: POLY, total: TOTAL }));
 
 app.post("/api/start", rateLimit, wrap(async (req, res) => {
   const name = String(req.body?.name || "").replace(/\s+/g, " ").trim().slice(0, 80);

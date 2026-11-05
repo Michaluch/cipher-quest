@@ -21,7 +21,7 @@ h2{font-family:var(--display);font-weight:500;font-size:1.25rem;margin:0}
 h3{font-size:.95rem;margin:4px 0 0;color:var(--accent)}
 p{margin:0}
 .sub,.small{color:var(--muted);font-size:.88rem}
-.progress{display:grid;grid-template-columns:repeat(15,18px);gap:4px}
+.progress{display:grid;grid-template-columns:repeat(11,18px);gap:4px}
 .progress i{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line);background:var(--panel)}
 .progress i.done{background:var(--accent);border-color:var(--accent)}
 .progress i.cur{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
@@ -79,7 +79,7 @@ table.results th{background:var(--accent);color:var(--accent-ink);text-align:lef
 table.results td{text-align:left}
 td.mono{font-family:var(--mono)}
 [hidden]{display:none!important}
-@media (max-width:560px){.progress{grid-template-columns:repeat(10,18px)}.stats{grid-template-columns:1fr}.tile{min-width:1.8rem;height:2.3rem;font-size:1.05rem}}
+@media (max-width:560px){.progress{grid-template-columns:repeat(11,18px)}.stats{grid-template-columns:1fr}.tile{min-width:1.8rem;height:2.3rem;font-size:1.05rem}}
 
 /* ---------- сторінка вчителя ---------- */
 .wrap.wide{max-width:1240px}
@@ -101,12 +101,12 @@ button.link{background:none;border:0;color:var(--muted);padding:4px 8px;font-siz
 button.link:hover{color:var(--bad)}
 .dayform{display:flex;gap:6px;align-items:center}
 select{font:inherit;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--panel);color:var(--ink)}
-.heat{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:4px}
+.heat{display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:4px}
 .hq{position:relative;border-radius:6px;padding:4px 0 2px;text-align:center;font-family:var(--mono);
   background:color-mix(in srgb,var(--accent) calc(var(--h) * 85%),var(--soft));color:var(--ink)}
 .hq .hn{display:block;font-size:.7rem;opacity:.75}
 .hq .he{display:block;font-weight:700;font-size:.85rem}
 .hq .ho{position:absolute;top:-6px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--amber);color:#1B1216;font-size:.7rem;font-weight:700;line-height:18px;padding:0 4px}
-@media (max-width:720px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.heat{grid-template-columns:repeat(10,minmax(0,1fr))}}
+@media (max-width:720px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.heat{grid-template-columns:repeat(7,minmax(0,1fr))}}
 table.results th .small{color:inherit;opacity:.8}
 .warnline{color:var(--amber);margin-top:4px}

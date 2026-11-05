@@ -31,7 +31,7 @@ const { QUESTIONS } = require("./questions");
   r = await post("/api/start", { name: "Друга Учениця" }); const t2 = r.token;
   let html = await get("/teacher?key=test-key");
   assert.ok(html.includes("Тестовий Учень") && html.includes(`<b>11.</b>`), "учитель бачить поточний етап");
-  assert.ok(html.includes("Друга Учениця") && html.includes("10 з 30") && html.includes("0 з 30"));
+  assert.ok(html.includes("Друга Учениця") && html.includes(`10 з ${QUESTIONS.length}`) && html.includes(`0 з ${QUESTIONS.length}`));
 
   // прогрес переживає перезапуск сервера (файл перечитується)
   await app.store.flush();
@@ -57,7 +57,7 @@ const { QUESTIONS } = require("./questions");
   assert.equal((await fetch(base + "/teacher?key=wrong")).status, 403);
   assert.equal((await fetch(base + "/teacher")).status, 401);
   html = await get("/teacher?key=test-key&day=all"); assert.ok(html.includes("Завершив(ла)"));
-  const csv = await get("/teacher.csv?key=test-key&day=all"); assert.ok(csv.includes("Тестовий Учень") && csv.includes("Помилки 30"));
+  const csv = await get("/teacher.csv?key=test-key&day=all"); assert.ok(csv.includes("Тестовий Учень") && csv.includes(`Помилки ${QUESTIONS.length}`));
 
   // видалення спроби
   const id2 = t2.split(".")[0];
